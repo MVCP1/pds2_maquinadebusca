@@ -1,17 +1,14 @@
 #include "leitor.h"
 
-namespace fs = std::filesystem;
-using namespace std;
-
-multiset<string> palavras_arquivo(string nome_arquivo) {
+std::multiset<std::string> palavras_arquivo(std::string nome_arquivo) {
     
     cout << nome_arquivo << endl;
 
-    ifstream arquivo;
+    std::ifstream arquivo;
     arquivo.open(nome_arquivo);
 
-    string palavra;
-    multiset<string> conjunto_de_palavras;
+    std::string palavra;
+    std::multiset<std::string> conjunto_de_palavras;
 
     while(arquivo >> palavra) {
         palavra = formaliza_palavra(palavra);
@@ -22,9 +19,9 @@ multiset<string> palavras_arquivo(string nome_arquivo) {
     return conjunto_de_palavras;
 }
 
-string formaliza_palavra(string palavra) {
+std::string formaliza_palavra(std::string palavra) {
     
-    string nova_palavra;
+    std::string nova_palavra;
 
     for(auto c : palavra) {
         c = tolower(c);
@@ -36,12 +33,12 @@ string formaliza_palavra(string palavra) {
     return nova_palavra;
 }
 
-vector<string> nomes_de_arquivos() {
-    string path = "files";
+std::vector<std::string> nomes_de_arquivos() {
+    std::string path = "files";
 
-    vector<string> arquivos;
+    std::vector<std::string> arquivos;
 
-    for (const auto & entry : fs::directory_iterator(path)) {
+    for (const auto & entry : std::filesystem::directory_iterator(path)) {
         arquivos.push_back(entry.path());
     }
 
