@@ -22,7 +22,7 @@ TEST_CASE("Nomes de arquivos") {
                                "arquivos_teste/drummond",
                                "arquivos_teste/flor",
                                "arquivos_teste/moraes",
-                               "arquivos_teste/dificil"};     
+                               "arquivos_teste/dificil"};
 
     set<string> nomes_retornados;
 
@@ -42,16 +42,16 @@ TEST_CASE("Pontuacao") {
 }
 
 TEST_CASE("Cria indice invertido") {
-    
+
     map<string,multiset<string> > teste;
 
     insere_indice_invertido(teste, "arquivos_teste/dificil");
 
 
     CHECK(teste.size() == 9);
-    
+
     multiset<string> real = {"arquivos_teste/dificil","arquivos_teste/dificil",
                              "arquivos_teste/dificil","arquivos_teste/dificil"};
-    
+
     CHECK(teste["nasce"] == real);
 }

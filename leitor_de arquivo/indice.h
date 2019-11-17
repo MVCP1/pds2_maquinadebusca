@@ -17,11 +17,11 @@ vector<string> nomes_de_arquivos(string path);
 // pasta que está no caminho "path"
 
 string formaliza_palavra(string palavra);
-// Recebe uma palavra, tira suas pontuações 
+// Recebe uma palavra, tira suas pontuações
 // e transforma em minúcula
 
 void insere_indice_invertido(map<string,multiset<string> > &indice, string nome_arquivo);
-// Lê o arquivo "nome_arquivo" coloca as palavras 
+// Lê o arquivo "nome_arquivo" coloca as palavras
 // contidas nele no map "índice", usando as palavras como chave
 // e os arquivos onde aparecem como elementos
 

@@ -5,6 +5,7 @@
 #include <map>
 
 #include "indice.h"
+#include "cordenada.h"
 
 using namespace std;
 
@@ -19,9 +20,9 @@ int main() {
     indice_invertido = cria_indice_invertido(nome_da_pasta);
 
     /*for(map<string,multiset<string>>::iterator it = indice_invertido.begin(); it != indice_invertido.end(); it++) {
-        
+
         string palavra = it->first;
-        
+
         cout << "A palavra \""<< palavra << "\" aparece nos arquivos: " << endl;
 
         for(auto docs : indice_invertido[palavra]) {
