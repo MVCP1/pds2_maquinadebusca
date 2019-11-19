@@ -1,30 +1,27 @@
 CC=g++
 CFLAGS=-lstdc++fs -std=c++17 -Wall
-arquivos=main.o indice.o main 
 
-all: main
+all: bin/main
 
-run: main
-	clear
-	./main
-
-teste: indice_teste
-	./indice_teste
-
-indice.o: indice.h indice.cpp
-	${CC} ${CFLAGS} -c indice.cpp -lstdc++fs
-
-main.o: indice.h  main.cpp
-	${CC} ${CFLAGS} -c main.cpp -lstdc++fs
-
-main: main.o indice.o
-	${CC} ${CFLAGS} main.o indice.o -o main -lstdc++fs
-
-indice_teste.o: indice_teste.cpp doctest.h
-	${CC} ${CFLAGS} -c indice_teste.cpp -lstdc++fs
-
-indice_teste: indice_teste.o indice.o
-	${CC} ${CFLAGS} indice_teste.o indice.o -o indice_teste -lstdc++fs
-
+run: bin/main
+	./bin/main
 clean:
-	rm -f $arquivos *.o
+	rm -rf bin/*
+
+teste: bin/indice_teste
+	./bin/indice_teste
+
+bin/indice.o: src/indice.cpp
+	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
+
+bin/main.o: src/main.cpp
+	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
+
+bin/indice_teste.o: src/indice_teste.cpp
+	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
+
+bin/indice_teste: bin/indice_teste.o bin/indice.o
+	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
+
+bin/main: bin/main.o bin/indice.o
+	${CC} ${CFLAGS} $^ -o $@ -lstdc++fs
