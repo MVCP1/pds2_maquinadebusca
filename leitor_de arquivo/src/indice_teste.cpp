@@ -18,11 +18,11 @@ class IndiceTeste {
             teste_indice_ptr = indice_ptr;
         }
 
-        void TesteInserePasta(string pasta) {
+        void teste_insere_pasta(string pasta) {
             return teste_indice_ptr->InserePasta(pasta);
         }
 
-        void TesteInsereArquivo(string nome_arquivo) {
+        void teste_insere_arquivo(string nome_arquivo) {
             return teste_indice_ptr->InsereArquivo(nome_arquivo);
         }
 
@@ -46,13 +46,13 @@ class IndiceTeste {
         IndiceInvertido *teste_indice_ptr;
 };
 
-TEST_CASE("Leitor índice Invertido") {
+TEST_CASE("Leitor Índice Invertido") {
     IndiceInvertido indice;
     IndiceTeste indice_teste(&indice);
 
-    indice_teste.TesteInserePasta("arquivos_teste");
+    indice_teste.teste_insere_pasta("arquivos_teste");
 
-    SUBCASE("Nomes arquivos") {
+    SUBCASE("nomes_arquivos()") {
         vector<string> nomes;
         nomes = indice_teste.teste_nomes_arquivos("arquivos_teste");
 
@@ -76,13 +76,13 @@ TEST_CASE("Leitor índice Invertido") {
         CHECK("batata" == indice_teste.teste_formaliza_palavra("BaTaTa"));
     }
 
-    SUBCASE("Pontuacao") {
+    SUBCASE("Pontuaçao") {
         CHECK("submarinoamarelo" == indice_teste.teste_formaliza_palavra(",.!submarino-amarelo?"));
     }
 }
 
 TEST_CASE("Índice invertido") {
-    SUBCASE("Tamanho") {
+    SUBCASE("num_arquivos()") {
         IndiceInvertido indice_;
         indice_.InserePasta("arquivos_teste");
 
@@ -93,7 +93,7 @@ TEST_CASE("Índice invertido") {
         IndiceInvertido indice;
         IndiceTeste indice_teste(&indice); 
         
-        indice_teste.TesteInserePasta("arquivos_teste");
+        indice_teste.teste_insere_pasta("arquivos_teste");
 
         REQUIRE(indice_teste.teste_num_arquivos() == 6);
 
@@ -105,7 +105,7 @@ TEST_CASE("Índice invertido") {
         CHECK(teste["nasce"] == real);
     }
 
-    SUBCASE("Acesso") {
+    SUBCASE("operator[]") {
         IndiceInvertido indice;
         indice.InserePasta("arquivos_teste");
 
