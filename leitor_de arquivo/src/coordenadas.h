@@ -9,25 +9,27 @@ using namespace std;
 
 class Coordenadas{
     public:
-        // Cria Coordenadas a partir de um �ndice invertido inserido
-        // PR� CONDI��O: A PALAVRA DEVE EXISTIR NO �NDICE
-        Coordenadas(string palavra, map<string,multiset<string> > indice, vector<string> nomes_de_arquivos);
+        // Cria Coordenadas a partir de um índice invertido inserido
+        // PRÉ CONDIÇÃO: A PALAVRA DEVE EXISTIR NO ÍNDICE
+        Coordenadas(string palavra, IndiceInvertido *indice);
 
         // Retorna a palavra que corresponde a essas coordenadas
         string  palavra();
 
-        // Retorna a frequ�ncia da palavra num doc
+        // Retorna a frequência da palavra num doc
         double frequencia(string doc);
 
-        // Retorna a import�ncia da palavra na cole��o
+        // Retorna a importância da palavra na coleção
         double importancia();
 
     private:
         string palavra_; // Palavra a que as coordenadas se referem
 
-        multiset<string> docs_; // Documentos em que a palavra est� presente (com repeti��o)
+        multiset<string> docs_; // Documentos em que a palavra está presente (com repetição)
 
         double totalDocs_; // Total de documentos existentes
 
-        double docsSemRepetir_; // Quantidade de ocumentos diferentes em que a palavra est� presente
+        double docsSemRepetir_; // Quantidade de ocumentos diferentes em que a palavra está presente
+		
+		friend class CoordenadasTeste;
 };
