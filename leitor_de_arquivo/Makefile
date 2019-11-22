@@ -54,18 +54,25 @@ bin/leitor_pesquisa_teste: bin/leitor_pesquisa_teste.o bin/leitor_pesquisa.o bin
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
+bin/normas.o: src/normas.cpp
+	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
+
+bin/normas: bin/normas.o bin/indice.o bin/coordenadas.o
+	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
+
+
 bin/rank.o: src/rank.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 
 bin/rank_teste.o: src/rank_teste.cpp
 	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
 
-bin/rank_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o
+bin/rank_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o bin/normas.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
 bin/main.o: src/main.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 	
-bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o bin/leitor_pesquisa.o
+bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o bin/leitor_pesquisa.o bin/normas.o
 	${CC} ${CFLAGS} $^ -o $@ -lstdc++fs

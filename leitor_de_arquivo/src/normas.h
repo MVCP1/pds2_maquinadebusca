@@ -6,6 +6,7 @@
 #define NORMAS_H
 
 #include "coordenadas.h"
+#include <map>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ double norma(string arquivo, map <string, multiset<string>>& indice);
 
 class Norma {
     public:
-        Norma(map<string, multiset<string>>& indice);
+        Norma(IndiceInvertido &indice);
 
 		double operator[](string arquivo);
 

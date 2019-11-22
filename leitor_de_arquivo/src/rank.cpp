@@ -15,7 +15,6 @@ double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& in
         freq = query.count(palavra);
 
         Coordenadas cord(palavra, indice);
-
         w_doc = cord.valor(arquivo);
         w_q = cord.importancia()*freq;
 
@@ -26,7 +25,7 @@ double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& in
 	produto_interno = sqrt(produto_interno);
 	norma_pesquisa = sqrt(norma_pesquisa);
 
-    if(soma_num==0) return 0;
+    if(produto_interno==0) return 0;
 
     return produto_interno / (norma_arquivo[arquivo]*norma_pesquisa);
 }
@@ -48,4 +47,4 @@ Rank::Rank(multiset <string> &query, IndiceInvertido& indice, Norma& normas) {
 void Rank::imprimir(int k) {
     for(int i=0; i<min((int) rank_.size(), k); i++)
         cout << rank_[i].first << endl;
-}
+}   

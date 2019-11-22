@@ -16,24 +16,23 @@ public:
     }
 };
 
-
-
 TEST_CASE("Rank") {
 
     RankTeste rank_teste;
     IndiceInvertido indice;
 
     indice.InserePasta("testes/rank_teste");
+    Norma normas(indice);
     multiset<string> query;
     query.insert("a");
     query.insert("b");
 
     SUBCASE("similaridade(rank_test)"){
 
-        CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice));
-        CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice));
-        CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice));
-        CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice));
+        CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice, normas));
+        CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice, normas));
+        CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice, normas));
+        CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice, normas));
     }
 
     SUBCASE("ord(pair<string, double>)"){
@@ -51,7 +50,7 @@ TEST_CASE("Rank") {
     }
 
     SUBCASE("rank()"){
-        Rank r(query, indice);
+        Rank r(query, indice, normas);
         vector <pair <string, double> > rank = rank_teste.rank(r);
 
         CHECK("testes/rank_teste/D4" == rank[0].first);
