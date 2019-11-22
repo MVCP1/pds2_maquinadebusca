@@ -24,8 +24,6 @@ class Norma {
     private:
     
         map <string, double>  norma_;
-
-        friend class NormaTeste;
 };
 
 #endif //NORMAS_H
