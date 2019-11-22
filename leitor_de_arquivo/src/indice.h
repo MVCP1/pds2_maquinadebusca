@@ -30,10 +30,14 @@ class IndiceInvertido{
         // Retorna nomes_arquivos_
         vector<string> nomes_arquivos();
 
+        // Retorna um set com todas as palavras chaves do map
+        set<string> todas_palavras();
+
     private:
 
         int num_arquivos_;
-        map<string,multiset<string> > indice_;
+        map<string,multiset<string> > indice_invertido_;
+        set<string> todas_palavras_;
         vector<string> nomes_arquivos_;
 
         // Insere em nomes_arquivos_ os nomes de arquivos da
