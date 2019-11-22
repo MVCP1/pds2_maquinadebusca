@@ -19,7 +19,7 @@ class IndiceTeste {
         }
 
         void teste_insere_arquivo(string nome_arquivo) {
-            return teste_indice_ptr_->InsereArquivo(nome_arquivo);
+            teste_indice_ptr_->InsereArquivo(nome_arquivo);
         }
 
         string teste_formaliza_palavra(string palavra) {
@@ -59,7 +59,6 @@ TEST_CASE("Leitor Índice Invertido") {
             CHECK(nomes_reais.count(s));
         }
     }
-
 
     SUBCASE("InsereArquivo(string)") {
         indice_teste.teste_insere_arquivo("arquivos_teste/dificil");

@@ -1,4 +1,6 @@
 
+#include "indice.h"
+
 #include <math.h>
 #include <string>
 #include <vector>
@@ -11,7 +13,7 @@ class Coordenadas{
     public:
         // Cria Coordenadas a partir de um índice invertido inserido
         // PRÉ CONDIÇÃO: A PALAVRA DEVE EXISTIR NO ÍNDICE
-        Coordenadas(string palavra, IndiceInvertido *indice);
+        Coordenadas(string palavra, IndiceInvertido &indice);
 
         // Retorna a palavra que corresponde a essas coordenadas
         string  palavra();

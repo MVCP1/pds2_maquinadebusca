@@ -10,7 +10,6 @@
 #include <set>
 
 #include "doctest.h"
-#include "indice.h"
 
 using namespace std;
 
@@ -38,17 +37,18 @@ TEST_SUITE("COORDENADAS") {
 		
 		CoordenadasTeste teste_c;
 		
-		IndiceInvertido indice();
+		IndiceInvertido indice;
+
 		indice.InserePasta("coordenadas_teste");
 		Coordenadas batata("batata", indice);
 		Coordenadas cenoura("cenoura", indice);
 		Coordenadas laranja("laranja", indice);
 		
 		
-		SUBCASE("palavra()"){
-			CHECK("batata" == teste_c.palavra(batata);
-			CHECK("cenoura" == teste_c.palavra(cenoura);
-			CHECK("laranja" == teste_c.palavra(laranja);
+		SUBCASE("palavra()") {
+			CHECK("batata" == teste_c.palavra(batata));
+			CHECK("cenoura" == teste_c.palavra(cenoura));
+			CHECK("laranja" == teste_c.palavra(laranja));
 		}
 		
 		SUBCASE("frequencia()"){
@@ -71,11 +71,11 @@ TEST_SUITE("COORDENADAS") {
 		SUBCASE("importancia()"){
 			
 			CHECK(4.0 == teste_c.totalDocs(batata));
-			CHECK(4.0 == teste_c.totalDocs(cenouta));
+			CHECK(4.0 == teste_c.totalDocs(cenoura));
 			CHECK(4.0 == teste_c.totalDocs(laranja));
 			
 			CHECK(3.0 == teste_c.docsSemRepetir(batata));
-			CHECK(4.0 == teste_c.docsSemRepetir(cenouta));
+			CHECK(4.0 == teste_c.docsSemRepetir(cenoura));
 			CHECK(2.0 == teste_c.docsSemRepetir(laranja));
 			
 			CHECK(log(4.0/3.0) == batata.importancia());
