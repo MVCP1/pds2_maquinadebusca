@@ -9,7 +9,8 @@ run: bin/main
 clean:
 	rm -rf bin/*
 
-teste: bin/coordenadas.o bin/rank.o bin/indice.o bin/leitor.o indice_teste coordenadas_teste rank_teste leitor_teste
+teste: indice_teste coordenadas_teste rank_teste
+# bin/leitor.o leitor_teste
 
 indice_teste: bin/indice_teste
 	./bin/indice_teste
@@ -54,18 +55,18 @@ bin/leitor_teste: bin/leitor_teste.o bin/leitor.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
-bin/rank.o: src/rank.cpp
+bin/rank.o: src/rank.cpp bin/indice.o bin/coordenadas.o
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 
-bin/rank_teste.o: src/rank_teste.cpp 
+bin/rank_teste.o: src/rank_teste.cpp bin/indice.o bin/coordenadas.o
 	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
 
-bin/coordenadas_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o
+bin/rank_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
 bin/main.o: src/main.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 	
-bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/leitor.o
+bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o #bin/leitor.o
 	${CC} ${CFLAGS} $^ -o $@ -lstdc++fs
