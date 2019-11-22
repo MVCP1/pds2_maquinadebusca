@@ -7,8 +7,8 @@
 using namespace std;
 
 
-double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& indice){
-    double soma_num = 0, soma_indice = 0, soma_querry = 0, w_doc, w_q;
+double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& indice, Norma& norma_arquivo){
+    double produto_interno = 0, norma_pesquisa = 0, w_doc, w_q;
     int freq;
 
     for(auto palavra : query){
@@ -17,17 +17,18 @@ double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& in
         Coordenadas cord(palavra, indice);
 
         w_doc = cord.valor(arquivo);
-
         w_q = cord.importancia()*freq;
 
-        soma_num += w_doc*w_q;
-        soma_indice += w_doc*w_doc;
-        soma_querry += w_q*w_q;
+        produto_interno += w_doc*w_q;
+        norma_pesquisa += w_q*w_q;
     }
+
+	produto_interno = sqrt(produto_interno);
+	norma_pesquisa = sqrt(norma_pesquisa);
 
     if(soma_num==0) return 0;
 
-    return soma_num / (sqrt(soma_indice)*sqrt(soma_querry));
+    return produto_interno / (norma_arquivo[arquivo]*norma_pesquisa);
 }
 
 
@@ -36,9 +37,9 @@ bool ord(pair<string, double > a, pair<string, double > b){
 }
 
 
-Rank::Rank(multiset <string> &query, IndiceInvertido& indice) {
+Rank::Rank(multiset <string> &query, IndiceInvertido& indice, Norma& normas) {
     for (auto arquivo : indice.nomes_arquivos())
-        rank_.push_back(make_pair(arquivo, similaridade(arquivo, query, indice)));
+        rank_.push_back(make_pair(arquivo, similaridade(arquivo, query, indice, normas)));
 
     sort(rank_.begin(), rank_.end(), ord);
 }
