@@ -30,8 +30,12 @@ class IndiceTeste {
             return teste_indice_ptr_->formaliza_palavra(palavra);
         }
 
-        map<string,multiset<string> > teste_indice() {
-            return teste_indice_ptr_->indice_;
+        map<string,multiset<string> > teste_indice_invertido() {
+            return teste_indice_ptr_->indice_invertido_;
+        }
+
+        set<string> teste_todas_palavras() {
+            return teste_indice_ptr_->todas_palavras_;
         }
 
     private:
@@ -60,6 +64,15 @@ TEST_CASE("Leitor Índice Invertido") {
         }
     }
 
+    SUBCASE("todas_palavras_") {
+        indice_teste.teste_InsereArquivo("testes/leitor_teste/leitor");
+        set<string> nomes_reais = {"a","b","c","defg"};
+        set<string> nomes_retornados = indice_teste.teste_todas_palavras();
+
+        REQUIRE(nomes_retornados.size() == nomes_reais.size());
+        CHECK(nomes_retornados == nomes_reais);
+    }
+
     SUBCASE("nomes_arquivos()") {
         indice_teste.teste_InsereNomesArquivos("testes/arquivos_teste");
 
@@ -81,7 +94,7 @@ TEST_CASE("Leitor Índice Invertido") {
 
     SUBCASE("InsereArquivo(string)") {
         indice_teste.teste_InsereArquivo("testes/arquivos_teste/dificil");
-        map<string,multiset<string> > map_teste = indice_teste.teste_indice();
+        map<string,multiset<string> > map_teste = indice_teste.teste_indice_invertido();
 
         multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
                                 "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
@@ -98,7 +111,7 @@ TEST_CASE("Leitor Índice Invertido") {
 
         REQUIRE(indice.num_arquivos() == 6);
 
-        map<string,multiset<string> > map_teste = indice_teste.teste_indice();
+        map<string,multiset<string> > map_teste = indice_teste.teste_indice_invertido();
 
         multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
                                 "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
