@@ -52,20 +52,20 @@ TEST_SUITE("COORDENADAS") {
 		}
 		
 		SUBCASE("frequencia(string)"){
-			CHECK(3.0 == teste_c.docs(batata).count("doc1"));
-			CHECK(2.0 == teste_c.docs(batata).count("doc2"));
-			CHECK(1.0 == teste_c.docs(batata).count("doc3"));
-			CHECK(0.0 == teste_c.docs(batata).count("doc4"));
+			CHECK(3.0 == teste_c.docs(batata).count("coordenadas_teste/doc1"));
+			CHECK(2.0 == teste_c.docs(batata).count("coordenadas_teste/doc2"));
+			CHECK(1.0 == teste_c.docs(batata).count("coordenadas_teste/doc3"));
+			CHECK(0.0 == teste_c.docs(batata).count("coordenadas_teste/doc4"));
 
-			CHECK(1.0 == teste_c.docs(cenoura).count("doc1"));
-			CHECK(1.0 == teste_c.docs(cenoura).count("doc2"));
-			CHECK(3.0 == teste_c.docs(cenoura).count("doc3"));
-			CHECK(1.0 == teste_c.docs(cenoura).count("doc4"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc1"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc2"));
+			CHECK(3.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc3"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc4"));
 
-			CHECK(1.0 == teste_c.docs(laranja).count("doc1"));
-			CHECK(0.0 == teste_c.docs(laranja).count("doc2"));
-			CHECK(0.0 == teste_c.docs(laranja).count("doc3"));
-			CHECK(3.0 == teste_c.docs(laranja).count("doc4"));
+			CHECK(1.0 == teste_c.docs(laranja).count("coordenadas_teste/doc1"));
+			CHECK(0.0 == teste_c.docs(laranja).count("coordenadas_teste/doc2"));
+			CHECK(0.0 == teste_c.docs(laranja).count("coordenadas_teste/doc3"));
+			CHECK(3.0 == teste_c.docs(laranja).count("coordenadas_teste/doc4"));
 		}
 		
 		SUBCASE("importancia()"){
@@ -85,20 +85,20 @@ TEST_SUITE("COORDENADAS") {
 		
 		SUBCASE("valor(string)"){
 			
-			CHECK(log(4.0/3.0)*3.0 == batata.valor(("doc1"));
-			CHECK(log(4.0/3.0)*2.0 == batata.valor(("doc2"));
-			CHECK(log(4.0/3.0)*1.0 == batata.valor(("doc3"));
-			CHECK(log(4.0/3.0)*0.0 == batata.valor(("doc4"));
+			CHECK(log(4.0/3.0)*3.0 == batata.valor("coordenadas_teste/doc1"));
+			CHECK(log(4.0/3.0)*2.0 == batata.valor("coordenadas_teste/doc2"));
+			CHECK(log(4.0/3.0)*1.0 == batata.valor("coordenadas_teste/doc3"));
+			CHECK(log(4.0/3.0)*0.0 == batata.valor("coordenadas_teste/doc4"));
 
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("doc1"));
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("doc2"));
-			CHECK(log(4.0/4.0)*3.0 == cenoura.valor("doc3"));
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("doc4"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc1"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc2"));
+			CHECK(log(4.0/4.0)*3.0 == cenoura.valor("coordenadas_teste/doc3"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc4"));
 
-			CHECK(log(4.0/2.0)*1.0 == laranja.valor("doc1"));
-			CHECK(log(4.0/2.0)*0.0 == laranja.valor("doc2"));
-			CHECK(log(4.0/2.0)*0.0 == laranja.valor("doc3"));
-			CHECK(log(4.0/2.0)*3.0 == laranja.valor("doc4"));
+			CHECK(log(4.0/2.0)*1.0 == laranja.valor("coordenadas_teste/doc1"));
+			CHECK(log(4.0/2.0)*0.0 == laranja.valor("coordenadas_teste/doc2"));
+			CHECK(log(4.0/2.0)*0.0 == laranja.valor("coordenadas_teste/doc3"));
+			CHECK(log(4.0/2.0)*3.0 == laranja.valor("coordenadas_teste/doc4"));
 			
 			
 		}

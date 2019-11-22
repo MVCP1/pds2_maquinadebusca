@@ -15,7 +15,7 @@ string  Coordenadas::palavra(){
 }
 
 double Coordenadas::frequencia(string doc){
-    return docs_.count(doc);
+    return (double) docs_.count(doc);
 }
 
 double Coordenadas::importancia(){
