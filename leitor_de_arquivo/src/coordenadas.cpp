@@ -21,3 +21,7 @@ double Coordenadas::frequencia(string doc){
 double Coordenadas::importancia(){
     return log(totalDocs_/docsSemRepetir_);
 }
+
+double Coordenadas::valor(string doc){
+    return docs_.count(doc)*log(totalDocs_/docsSemRepetir_);
+}

@@ -25,6 +25,9 @@ class Coordenadas{
 
         // Retorna a importância da palavra na coleção
         double importancia();
+		
+		// Retorna o valor da coordenada de um documento no eixo da palavra
+        double valor(string doc);
 
     private:
         string palavra_; // Palavra a que as coordenadas se referem
