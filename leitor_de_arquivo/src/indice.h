@@ -27,10 +27,18 @@ class IndiceInvertido{
         // Retorna um multiset de documentos onde palavra aparece
         multiset<string> operator[](string palavra);
 
+        // Retorna nomes_arquivos_
+        vector<string> nomes_arquivos();
+
     private:
 
         int num_arquivos_;
         map<string,multiset<string> > indice_;
+        vector<string> nomes_arquivos_;
+
+        // Insere em nomes_arquivos_ os nomes de arquivos da
+        // pasta que está no caminho "path"
+        void InsereNomesArquivos(string path);
         
         // Lê o arquivo "nome_arquivo" coloca as palavras
         // contidas nele no map "índice", usando as palavras como chave
@@ -41,9 +49,6 @@ class IndiceInvertido{
         // e transforma em minúcula
         string formaliza_palavra(string palavra);
 
-        // Retorna um vetor contendo os nomes de arquivos na
-        // pasta que está no caminho "path"
-        vector<string> nomes_arquivos(string path);
 
         friend class IndiceTeste;
 

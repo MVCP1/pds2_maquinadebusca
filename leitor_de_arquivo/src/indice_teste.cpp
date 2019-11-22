@@ -18,16 +18,16 @@ class IndiceTeste {
             teste_indice_ptr_ = indice_ptr;
         }
 
-        void teste_insere_arquivo(string nome_arquivo) {
+        void teste_InsereArquivo(string nome_arquivo) {
             teste_indice_ptr_->InsereArquivo(nome_arquivo);
+        }
+
+        void teste_InsereNomesArquivos(string nome_arquivo) {
+            teste_indice_ptr_->InsereNomesArquivos(nome_arquivo);
         }
 
         string teste_formaliza_palavra(string palavra) {
             return teste_indice_ptr_->formaliza_palavra(palavra);
-        }
-
-        vector<string> teste_nomes_arquivos(string path) {
-            return teste_indice_ptr_->nomes_arquivos(path);
         }
 
         map<string,multiset<string> > teste_indice() {
@@ -42,14 +42,33 @@ TEST_CASE("Leitor Índice Invertido") {
     IndiceInvertido indice;
     IndiceTeste indice_teste(&indice);
 
-    SUBCASE("nomes_arquivos()") {
-        indice.InserePasta("testes/arquivos_teste");
-        vector<string> nomes = indice_teste.teste_nomes_arquivos("testes/arquivos_teste");
+    SUBCASE("InsereNomesArquivos()") {
+        indice_teste.teste_InsereNomesArquivos("testes/arquivos_teste");
+        vector<string> nomes = indice.nomes_arquivos();
 
         set<string> nomes_reais = {"testes/arquivos_teste/bilac",
-                                    "testes/arquivos_teste/dias",
                                     "testes/arquivos_teste/drummond",
                                     "testes/arquivos_teste/flor",
+                                    "testes/arquivos_teste/dias",
+                                    "testes/arquivos_teste/moraes",
+                                    "testes/arquivos_teste/dificil"};
+
+        REQUIRE(nomes.size() == nomes_reais.size());
+
+        for(auto s : nomes) {
+            CHECK(nomes_reais.count(s));
+        }
+    }
+
+    SUBCASE("nomes_arquivos()") {
+        indice_teste.teste_InsereNomesArquivos("testes/arquivos_teste");
+
+        vector<string> nomes = indice.nomes_arquivos();
+
+        set<string> nomes_reais = {"testes/arquivos_teste/bilac",
+                                    "testes/arquivos_teste/drummond",
+                                    "testes/arquivos_teste/flor",
+                                    "testes/arquivos_teste/dias",
                                     "testes/arquivos_teste/moraes",
                                     "testes/arquivos_teste/dificil"};
 
@@ -61,7 +80,7 @@ TEST_CASE("Leitor Índice Invertido") {
     }
 
     SUBCASE("InsereArquivo(string)") {
-        indice_teste.teste_insere_arquivo("testes/arquivos_teste/dificil");
+        indice_teste.teste_InsereArquivo("testes/arquivos_teste/dificil");
         map<string,multiset<string> > map_teste = indice_teste.teste_indice();
 
         multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",

@@ -6,6 +6,7 @@ namespace fs = filesystem;
 IndiceInvertido::IndiceInvertido() {
     map<string,multiset<string> > indice_;
     num_arquivos_ = 0;
+    vector<string> nomes_arquivos_(0);
 }
 
 int IndiceInvertido::num_arquivos() {
@@ -17,7 +18,8 @@ multiset<string> IndiceInvertido::operator[](string palavra) {
 }
 
 void IndiceInvertido::InserePasta(string pasta) {
-    vector<string> lista_de_arquivos = nomes_arquivos(pasta);
+    InsereNomesArquivos(pasta);
+    vector<string> lista_de_arquivos = nomes_arquivos();
 
     for(auto nome_arquivo_atual : lista_de_arquivos) {
         InsereArquivo(nome_arquivo_atual);
@@ -40,15 +42,15 @@ void IndiceInvertido::InsereArquivo(string nome_arquivo) {
     arquivo.close();
 }
 
-vector<string> IndiceInvertido::nomes_arquivos(string path) {
-
-    vector<string> arquivos;
+void IndiceInvertido::InsereNomesArquivos(string path) {
 
     for (const auto & entry : fs::directory_iterator(path)) {
-        arquivos.push_back(entry.path());
+        nomes_arquivos_.push_back(entry.path());
     }
+}
 
-    return arquivos;
+vector<string> IndiceInvertido::nomes_arquivos() {
+    return nomes_arquivos_;
 }
 
 string IndiceInvertido::formaliza_palavra(string palavra) {
