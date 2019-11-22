@@ -20,6 +20,7 @@ class LeitorPesquisa{
     public: 
         LeitorPesquisa();
 
+        // Retorna um multiset com as palavras da query no formato correto
         multiset<string> Pesquisa(IndiceInvertido &indice);
     private:
 
