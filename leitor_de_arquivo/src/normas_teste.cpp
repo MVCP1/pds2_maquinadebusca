@@ -8,27 +8,29 @@
 
 using namespace std;
 
-
-class RankTeste{
-public:
-    vector <pair <string, double> > rank(Rank& r){
-        return r.rank_;
-    }
+class NormaTeste{
+    public:
+        map<string, double> teste_normas(Norma &n){
+            return n.norma_;
+        }
 };
 
 TEST_CASE("Norma") {
 
-    NormaTeste norma_teste;
     IndiceInvertido indice;
 
     indice.InserePasta("testes/rank_teste");
     Norma normas(indice);
+    NormaTeste teste;
+    map<string, double> m = teste.teste_normas(normas);
 
-    SUBCASE("operator[]"){
-
-        CHECK(0.71 == normas["testes/rank_teste/D1"]);
-        CHECK(0.71 == normas["testes/rank_teste/D2"]);
-        CHECK(0.71 == normas["testes/rank_teste/D3"]);
+    SUBCASE("normas"){
+        CHECK(1.0 < normas["testes/rank_teste/D1"]);
+        CHECK(1.0 < normas["testes/rank_teste/D2"]);
+        CHECK(0.6 > normas["testes/rank_teste/D3"]);
+        CHECK(0.5 < normas["testes/rank_teste/D3"]);
+        CHECK(1.45 > normas["testes/rank_teste/D4"]);
+        CHECK(1.30 < normas["testes/rank_teste/D4"]);
     }
 }
 

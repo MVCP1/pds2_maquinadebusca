@@ -9,7 +9,7 @@ run: bin/main
 clean:
 	rm -rf bin/*
 
-teste: indice_teste coordenadas_teste leitor_pesquisa_teste rank_teste 
+teste: indice_teste coordenadas_teste leitor_pesquisa_teste normas_teste rank_teste 
 
 indice_teste: bin/indice_teste
 	./bin/indice_teste
@@ -22,6 +22,9 @@ rank_teste: bin/rank_teste
 
 leitor_pesquisa_teste: bin/leitor_pesquisa_teste
 	./bin/leitor_pesquisa_teste
+
+normas_teste: bin/normas_teste
+	./bin/normas_teste
 
 
 bin/indice.o: src/indice.cpp
@@ -57,7 +60,10 @@ bin/leitor_pesquisa_teste: bin/leitor_pesquisa_teste.o bin/leitor_pesquisa.o bin
 bin/normas.o: src/normas.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 
-bin/normas: bin/normas.o bin/indice.o bin/coordenadas.o
+bin/normas_teste.o: src/normas_teste.cpp
+	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
+
+bin/normas_teste: bin/normas_teste.o bin/coordenadas.o bin/indice.o bin/normas.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 

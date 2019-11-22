@@ -24,16 +24,36 @@ TEST_CASE("Rank") {
     indice.InserePasta("testes/rank_teste");
     Norma normas(indice);
     multiset<string> query;
+
     query.insert("a");
-    query.insert("b");
+    query.insert("a");
+    query.insert("a");
 
     SUBCASE("similaridade(rank_test)"){
 
-        CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice, normas));
-        CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice, normas));
-        CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice, normas));
-        CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice, normas));
+        CHECK(0.7 < similaridade("testes/rank_teste/D1", query, indice, normas));
+        CHECK(0.35 < similaridade("testes/rank_teste/D2", query, indice, normas));
+        CHECK(0.45 > similaridade("testes/rank_teste/D2", query, indice, normas));
+        CHECK(1.0 == similaridade("testes/rank_teste/D3", query, indice, normas));
+        CHECK(0.0 == similaridade("testes/rank_teste/D4", query, indice, normas));
     }
+
+    SUBCASE("rank()"){
+        Rank r(query, indice, normas);
+        vector <pair <string, double> > rank = rank_teste.rank(r);
+
+        CHECK("testes/rank_teste/D3" == rank[0].first);
+        CHECK("testes/rank_teste/D1" == rank[1].first);
+        CHECK("testes/rank_teste/D2" == rank[2].first);
+        CHECK("testes/rank_teste/D4" == rank[3].first);
+    }
+
+    query.insert("b");
+
+    SUBCASE("similaridade(rank_test)"){
+        CHECK(0.0 < similaridade("testes/rank_teste/D4", query, indice, normas));
+        CHECK(1.0 > similaridade("testes/rank_teste/D3", query, indice, normas));
+    }    
 
     SUBCASE("ord(pair<string, double>)"){
         vector<pair<string, double> > v_ord;
@@ -49,14 +69,5 @@ TEST_CASE("Rank") {
 
     }
 
-    SUBCASE("rank()"){
-        Rank r(query, indice, normas);
-        vector <pair <string, double> > rank = rank_teste.rank(r);
-
-        CHECK("testes/rank_teste/D4" == rank[0].first);
-        CHECK("testes/rank_teste/D1" == rank[1].first);
-        CHECK("testes/rank_teste/D3" == rank[2].first);
-        CHECK("testes/rank_teste/D2" == rank[3].first);
-    }
 }
 

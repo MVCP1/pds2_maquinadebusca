@@ -10,8 +10,11 @@ using namespace std;
 double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& indice, Norma& norma_arquivo){
     double produto_interno = 0, norma_pesquisa = 0, w_doc, w_q;
     int freq;
+    
+    set<string> new_set;
+    for(auto palavra : query) new_set.insert(palavra);
 
-    for(auto palavra : query){
+    for(auto palavra : new_set){
         freq = query.count(palavra);
 
         Coordenadas cord(palavra, indice);
@@ -21,8 +24,6 @@ double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& in
         produto_interno += w_doc*w_q;
         norma_pesquisa += w_q*w_q;
     }
-
-	produto_interno = sqrt(produto_interno);
 	norma_pesquisa = sqrt(norma_pesquisa);
 
     if(produto_interno==0) return 0;
@@ -45,6 +46,11 @@ Rank::Rank(multiset <string> &query, IndiceInvertido& indice, Norma& normas) {
 
 
 void Rank::imprimir(int k) {
-    for(int i=0; i<min((int) rank_.size(), k); i++)
-        cout << rank_[i].first << endl;
+    cout << rank_[0].first << " ";
+    for(int i=1; i<min((int) rank_.size(), k); i++){
+        if(rank_[i].second != rank_[i-1].second)
+            cout << endl;
+            
+        cout << rank_[i].first << " ";
+    }
 }   

@@ -6,24 +6,23 @@
 #define NORMAS_H
 
 #include "coordenadas.h"
+#include "indice.h"
 #include <map>
+#include <string>
 
 using namespace std;
 
-
-// Calcula a similaridade de um arquivo com uma query
-double norma(string arquivo, map <string, multiset<string>>& indice);
-
-
-class Norma {
+class Norma{
     public:
         Norma(IndiceInvertido &indice);
 
 		double operator[](string arquivo);
 
     private:
-    
-        map <string, double>  norma_;
+
+        map<string, double>  norma_;
+
+        friend class NormaTeste;
 };
 
 #endif //NORMAS_H

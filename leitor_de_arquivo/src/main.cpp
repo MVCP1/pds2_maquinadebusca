@@ -1,17 +1,23 @@
 #include <iostream>
-#include <string>
-#include <set>
-#include <vector>
-#include <map>
-
 #include "indice.h"
 #include "coordenadas.h"
+#include "rank.h"
+#include "leitor_pesquisa.h"
+#include "normas.h"
 
 using namespace std;
 
 int main() {
     IndiceInvertido indice;
     indice.InserePasta("arquivos");
+    Norma norma(indice);
+
+    LeitorPesquisa leitor;
+    multiset <string> pesquisa = leitor.Pesquisa(indice);
+    
+    Rank rank(pesquisa, indice, norma);
+
+    rank.imprimir(10);
 
     return 0;
 }
