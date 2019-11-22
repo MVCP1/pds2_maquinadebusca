@@ -33,13 +33,13 @@ class CoordenadasTeste{
 };
 
 TEST_SUITE("COORDENADAS") {  
-	TEST_CASE("USANDO AQUIVOS em coordenadas_teste") {
+	TEST_CASE("USANDO AQUIVOS em testes/coordenadas_teste") {
 		
 		CoordenadasTeste teste_c;
 		
 		IndiceInvertido indice;
 
-		indice.InserePasta("coordenadas_teste");
+		indice.InserePasta("testes/coordenadas_teste");
 		Coordenadas batata("batata", indice);
 		Coordenadas cenoura("cenoura", indice);
 		Coordenadas laranja("laranja", indice);
@@ -52,20 +52,20 @@ TEST_SUITE("COORDENADAS") {
 		}
 		
 		SUBCASE("frequencia(string)"){
-			CHECK(3.0 == teste_c.docs(batata).count("coordenadas_teste/doc1"));
-			CHECK(2.0 == teste_c.docs(batata).count("coordenadas_teste/doc2"));
-			CHECK(1.0 == teste_c.docs(batata).count("coordenadas_teste/doc3"));
-			CHECK(0.0 == teste_c.docs(batata).count("coordenadas_teste/doc4"));
+			CHECK(3.0 == teste_c.docs(batata).count("testes/coordenadas_teste/doc1"));
+			CHECK(2.0 == teste_c.docs(batata).count("testes/coordenadas_teste/doc2"));
+			CHECK(1.0 == teste_c.docs(batata).count("testes/coordenadas_teste/doc3"));
+			CHECK(0.0 == teste_c.docs(batata).count("testes/coordenadas_teste/doc4"));
 
-			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc1"));
-			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc2"));
-			CHECK(3.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc3"));
-			CHECK(1.0 == teste_c.docs(cenoura).count("coordenadas_teste/doc4"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("testes/coordenadas_teste/doc1"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("testes/coordenadas_teste/doc2"));
+			CHECK(3.0 == teste_c.docs(cenoura).count("testes/coordenadas_teste/doc3"));
+			CHECK(1.0 == teste_c.docs(cenoura).count("testes/coordenadas_teste/doc4"));
 
-			CHECK(1.0 == teste_c.docs(laranja).count("coordenadas_teste/doc1"));
-			CHECK(0.0 == teste_c.docs(laranja).count("coordenadas_teste/doc2"));
-			CHECK(0.0 == teste_c.docs(laranja).count("coordenadas_teste/doc3"));
-			CHECK(3.0 == teste_c.docs(laranja).count("coordenadas_teste/doc4"));
+			CHECK(1.0 == teste_c.docs(laranja).count("testes/coordenadas_teste/doc1"));
+			CHECK(0.0 == teste_c.docs(laranja).count("testes/coordenadas_teste/doc2"));
+			CHECK(0.0 == teste_c.docs(laranja).count("testes/coordenadas_teste/doc3"));
+			CHECK(3.0 == teste_c.docs(laranja).count("testes/coordenadas_teste/doc4"));
 		}
 		
 		SUBCASE("importancia()"){
@@ -85,20 +85,20 @@ TEST_SUITE("COORDENADAS") {
 		
 		SUBCASE("valor(string)"){
 			
-			CHECK(log(4.0/3.0)*3.0 == batata.valor("coordenadas_teste/doc1"));
-			CHECK(log(4.0/3.0)*2.0 == batata.valor("coordenadas_teste/doc2"));
-			CHECK(log(4.0/3.0)*1.0 == batata.valor("coordenadas_teste/doc3"));
-			CHECK(log(4.0/3.0)*0.0 == batata.valor("coordenadas_teste/doc4"));
+			CHECK(log(4.0/3.0)*3.0 == batata.valor("testes/coordenadas_teste/doc1"));
+			CHECK(log(4.0/3.0)*2.0 == batata.valor("testes/coordenadas_teste/doc2"));
+			CHECK(log(4.0/3.0)*1.0 == batata.valor("testes/coordenadas_teste/doc3"));
+			CHECK(log(4.0/3.0)*0.0 == batata.valor("testes/coordenadas_teste/doc4"));
 
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc1"));
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc2"));
-			CHECK(log(4.0/4.0)*3.0 == cenoura.valor("coordenadas_teste/doc3"));
-			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("coordenadas_teste/doc4"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("testes/coordenadas_teste/doc1"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("testes/coordenadas_teste/doc2"));
+			CHECK(log(4.0/4.0)*3.0 == cenoura.valor("testes/coordenadas_teste/doc3"));
+			CHECK(log(4.0/4.0)*1.0 == cenoura.valor("testes/coordenadas_teste/doc4"));
 
-			CHECK(log(4.0/2.0)*1.0 == laranja.valor("coordenadas_teste/doc1"));
-			CHECK(log(4.0/2.0)*0.0 == laranja.valor("coordenadas_teste/doc2"));
-			CHECK(log(4.0/2.0)*0.0 == laranja.valor("coordenadas_teste/doc3"));
-			CHECK(log(4.0/2.0)*3.0 == laranja.valor("coordenadas_teste/doc4"));
+			CHECK(log(4.0/2.0)*1.0 == laranja.valor("testes/coordenadas_teste/doc1"));
+			CHECK(log(4.0/2.0)*0.0 == laranja.valor("testes/coordenadas_teste/doc2"));
+			CHECK(log(4.0/2.0)*0.0 == laranja.valor("testes/coordenadas_teste/doc3"));
+			CHECK(log(4.0/2.0)*3.0 == laranja.valor("testes/coordenadas_teste/doc4"));
 			
 			
 		}

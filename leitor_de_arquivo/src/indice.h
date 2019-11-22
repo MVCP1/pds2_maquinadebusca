@@ -46,6 +46,8 @@ class IndiceInvertido{
         vector<string> nomes_arquivos(string path);
 
         friend class IndiceTeste;
+
+        friend class Rank;
 };
 
 #endif // INDICE_H

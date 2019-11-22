@@ -43,15 +43,15 @@ TEST_CASE("Leitor Índice Invertido") {
     IndiceTeste indice_teste(&indice);
 
     SUBCASE("nomes_arquivos()") {
-        indice.InserePasta("arquivos_teste");
-        vector<string> nomes = indice_teste.teste_nomes_arquivos("arquivos_teste");
+        indice.InserePasta("testes/arquivos_teste");
+        vector<string> nomes = indice_teste.teste_nomes_arquivos("testes/arquivos_teste");
 
-        set<string> nomes_reais = {"arquivos_teste/bilac",
-                                    "arquivos_teste/dias",
-                                    "arquivos_teste/drummond",
-                                    "arquivos_teste/flor",
-                                    "arquivos_teste/moraes",
-                                    "arquivos_teste/dificil"};
+        set<string> nomes_reais = {"testes/arquivos_teste/bilac",
+                                    "testes/arquivos_teste/dias",
+                                    "testes/arquivos_teste/drummond",
+                                    "testes/arquivos_teste/flor",
+                                    "testes/arquivos_teste/moraes",
+                                    "testes/arquivos_teste/dificil"};
 
         REQUIRE(nomes.size() == nomes_reais.size());
 
@@ -61,38 +61,38 @@ TEST_CASE("Leitor Índice Invertido") {
     }
 
     SUBCASE("InsereArquivo(string)") {
-        indice_teste.teste_insere_arquivo("arquivos_teste/dificil");
+        indice_teste.teste_insere_arquivo("testes/arquivos_teste/dificil");
         map<string,multiset<string> > map_teste = indice_teste.teste_indice();
 
-        multiset<string> real = {"arquivos_teste/dificil","arquivos_teste/dificil",
-                                "arquivos_teste/dificil","arquivos_teste/dificil"};
+        multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
+                                "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
 
         CHECK(map_teste["nasce"] == real);
 
-        real = {"arquivos_teste/dificil"};
+        real = {"testes/arquivos_teste/dificil"};
 
         CHECK(map_teste["quando"] == real);
     }
 
     SUBCASE("InserePasta(string)") {
-        indice.InserePasta("arquivos_teste");
+        indice.InserePasta("testes/arquivos_teste");
 
         REQUIRE(indice.num_arquivos() == 6);
 
         map<string,multiset<string> > map_teste = indice_teste.teste_indice();
 
-        multiset<string> real = {"arquivos_teste/dificil","arquivos_teste/dificil",
-                                "arquivos_teste/dificil","arquivos_teste/dificil"};
+        multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
+                                "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
 
         CHECK(map_teste["nasce"] == real);
 
-        real = {"arquivos_teste/moraes","arquivos_teste/moraes"};
+        real = {"testes/arquivos_teste/moraes","testes/arquivos_teste/moraes"};
 
         CHECK(map_teste["amor"] == real); 
     }
     
     SUBCASE("num_arquivos()") {
-        indice.InserePasta("arquivos_teste");
+        indice.InserePasta("testes/arquivos_teste");
 
         CHECK(indice.num_arquivos() == 6);
     }
@@ -104,10 +104,10 @@ TEST_CASE("Leitor Índice Invertido") {
     }
 
     SUBCASE("operator[]") {
-        indice.InserePasta("arquivos_teste");
+        indice.InserePasta("testes/arquivos_teste");
 
-        multiset<string> real = {"arquivos_teste/dificil","arquivos_teste/dificil",
-                                "arquivos_teste/dificil","arquivos_teste/dificil"};
+        multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
+                                "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
 
         CHECK(indice["nasce"] == real);
     }
