@@ -17,19 +17,19 @@ using namespace std;
 class CoordenadasTeste{
     public:
         string palavra(Coordenadas c) {
-            return palavra_;
+            return c.palavra_;
         }
 
         multiset<string> docs(Coordenadas c) {
-            return docs_;
+            return c.docs_;
         }
 
         double totalDocs(Coordenadas c) {
-            return totalDocs_;
+            return c.totalDocs_;
         }
 
         double docsSemRepetir(Coordenadas c) {
-            return docsSemRepetir_;
+            return c.docsSemRepetir_;
         }
 };
 
