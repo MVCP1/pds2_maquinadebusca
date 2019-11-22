@@ -5,11 +5,11 @@ namespace fs = filesystem;
 
 IndiceInvertido::IndiceInvertido() {
     map<string,multiset<string> > indice_;
-    numDocs_ = 0;
+    num_arquivos_ = 0;
 }
 
-int IndiceInvertido::numArquivos() {
-    return numDocs_;
+int IndiceInvertido::num_arquivos() {
+    return num_arquivos_;
 }
 
 multiset<string> IndiceInvertido::operator[](string palavra) {
@@ -21,7 +21,7 @@ void IndiceInvertido::InserePasta(string pasta) {
 
     for(auto nome_arquivo_atual : lista_de_arquivos) {
         InsereArquivo(nome_arquivo_atual);
-        numDocs_++;
+        num_arquivos_++;
     }
 }
 

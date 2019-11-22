@@ -8,6 +8,8 @@ run: bin/main
 clean:
 	rm -rf bin/*
 
+teste: indice_teste coordenadas_teste
+
 indice_teste: bin/indice_teste
 	./bin/indice_teste
 	

@@ -19,14 +19,14 @@ class IndiceInvertido{
         void InserePasta(string pasta);
 
         // Retorna o número de documentos lidos no índice
-        int numArquivos();
+        int num_arquivos();
 
         // Retorna um multiset de documentos onde palavra aparece
         multiset<string> operator[](string palavra);
 
     private:
 
-        int numDocs_;
+        int num_arquivos_;
         map<string,multiset<string> > indice_;
         
         // Lê o arquivo "nome_arquivo" coloca as palavras
