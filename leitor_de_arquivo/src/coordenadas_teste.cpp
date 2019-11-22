@@ -1,6 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "coordenadas.h"
-#include "indice.h"
 
 #include <map>
 #include <string>

@@ -1,6 +1,5 @@
 
 #include "coordenadas.h"
-#include "indice.h"
 
 Coordenadas::Coordenadas(string palavra, IndiceInvertido& indice){
     palavra_ = palavra;

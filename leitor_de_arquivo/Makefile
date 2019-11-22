@@ -31,10 +31,10 @@ bin/indice_teste: bin/indice_teste.o bin/indice.o
 bin/coordenadas.o: src/coordenadas.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 
-bin/coordenadas_teste.o: src/coordenadas_teste.cpp
+bin/coordenadas_teste.o: src/coordenadas_teste.cpp bin/indice.o
 	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
 
-bin/coordenadas_teste: bin/coordenadas_teste.o bin/coordenadas.o
+bin/coordenadas_teste: bin/coordenadas_teste.o bin/coordenadas.o bin/indice.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 bin/main: bin/main.o bin/indice.o bin/coordenadas.o
