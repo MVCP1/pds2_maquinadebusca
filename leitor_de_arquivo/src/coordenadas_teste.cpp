@@ -1,4 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "indice.h"
 #include "coordenadas.h"
 
 #include <map>

@@ -20,8 +20,11 @@ double Coordenadas::frequencia(string doc){
 
 double Coordenadas::importancia(){
     return log(totalDocs_/docsSemRepetir_);
+<<<<<<< Updated upstream
 }
 
 double Coordenadas::valor(string doc){
     return docs_.count(doc)*log(totalDocs_/docsSemRepetir_);
+=======
+>>>>>>> Stashed changes
 }
