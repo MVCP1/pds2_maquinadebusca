@@ -1,3 +1,5 @@
+#ifndef COORDENADAS_H
+#define COORDENADAS_H
 
 #include "indice.h"
 
@@ -35,3 +37,5 @@ class Coordenadas{
 		
 		friend class CoordenadasTeste;
 };
+
+#endif // FILA_H

@@ -1,6 +1,9 @@
 // Funções que leem arquivos da pasta "files",
 // quebram o texto em palavras e retornam
 
+#ifndef INDICE_H
+#define INDICE_H
+
 #include <iostream>
 #include <filesystem>
 #include <fstream>
@@ -44,3 +47,5 @@ class IndiceInvertido{
 
         friend class IndiceTeste;
 };
+
+#endif // INDICE_H
