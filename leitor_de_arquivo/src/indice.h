@@ -49,10 +49,7 @@ class IndiceInvertido{
         // e transforma em minúcula
         string formaliza_palavra(string palavra);
 
-
         friend class IndiceTeste;
-
-        friend class Rank;
 };
 
 #endif // INDICE_H

@@ -9,7 +9,7 @@ run: bin/main
 clean:
 	rm -rf bin/*
 
-teste: indice_teste coordenadas_teste rank_teste leitor_pesquisa_teste
+teste: indice_teste coordenadas_teste leitor_pesquisa_teste rank_teste 
 
 indice_teste: bin/indice_teste
 	./bin/indice_teste
@@ -20,7 +20,7 @@ coordenadas_teste: bin/coordenadas_teste
 rank_teste: bin/rank_teste
 	./bin/rank_teste
 
-leitor_teste: bin/leitor_pesquisa_teste
+leitor_pesquisa_teste: bin/leitor_pesquisa_teste
 	./bin/leitor_pesquisa_teste
 
 
@@ -50,7 +50,7 @@ bin/leitor_pesquisa.o: src/leitor_pesquisa.cpp
 bin/leitor_pesquisa_teste.o: src/leitor_pesquisa_teste.cpp
 	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
 
-bin/leitor_pesquisa_teste: bin/leitor_pesquisa_teste.o bin/leitor_pesquisa.o
+bin/leitor_pesquisa_teste: bin/leitor_pesquisa_teste.o bin/leitor_pesquisa.o bin/indice.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 

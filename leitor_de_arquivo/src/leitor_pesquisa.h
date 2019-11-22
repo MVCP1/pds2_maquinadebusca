@@ -19,20 +19,24 @@ using namespace std;
 class LeitorPesquisa{
     public: 
         LeitorPesquisa();
-        
-        // Recebe uma string da pesquisa feita e retorna um multiset da com as palavras e suas frequências
-        multiset<string> pesquisa(IndiceInvertido &indice);
 
+        multiset<string> Pesquisa(IndiceInvertido &indice);
     private:
 
         // Multiset de todas as palavras da pesquisa (que também existem nos documentos) tratadas
         multiset<string> palavras_; 
+
+        // Recebe uma string digitada pelo usuário
+        string entrada();
+        
+        // Recebe uma string da pesquisa feita e retorna um multiset da com as palavras e suas frequências
+        multiset<string> frequencias(IndiceInvertido &indice, string pesquisa);
 		
         // Recebe uma palavra, tira suas pontuações
-        // e transforma em minúcula
+        // e transforma em minúscula
         string formaliza_palavra(string palavra);
 
-        friend class LeitorTeste;
+        friend class LeitorPesquisaTeste;
 };
 
 #endif // LEITOR_PESQUISA_H
