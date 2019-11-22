@@ -10,27 +10,54 @@ using namespace std;
 
 
 class RankTeste{
-    public:
-        vector <pair <string, int> > rank(Rank& r){
-            return r.rank_;
-        }
+public:
+    vector <pair <string, double> > rank(Rank& r){
+        return r.rank_;
+    }
 };
 
 
-TEST_CASE("Rank") {
+TEST_SUITE("rank_teste")
+    TEST_CASE("Rank") {
 
-    RankTeste rank_teste;
-    IndiceInvertido indice;
+        RankTeste rank_teste;
+        IndiceInvertido indice;
 
-    indice.InserePasta("testes/coordenadas_teste");
-    multiset<string> query;
-    query.insert("batata");
+        indice.InserePasta("testes/rank_teste");
+        multiset<string> query;
+        query.insert("a");
+        query.insert("b");
 
-    SUBCASE("similaridade(string, multiset<string>, IndiceInvertido)"){
+        SUBCASE("similaridade(rank_test)"){
 
-        CHECK(0.0 != similaridade("testes/coordenadas_teste/doc1", query, indice));
-        CHECK(0.0 != similaridade("testes/coordenadas_teste/doc2", query, indice));
-        CHECK(0.0 != similaridade("testes/coordenadas_teste/doc3", query, indice));
-        CHECK(0.0 != similaridade("testes/coordenadas_teste/doc4", query, indice));
-    }
+            CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice));
+            CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice));
+            CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice));
+            CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice));
+        }
+
+        SUBCASE("ord(pair<string, double>)"){
+            vector<pair<string, double> > v_ord;
+            v_ord.push_back(make_pair("a", 2.0));
+            v_ord.push_back(make_pair("b", 1.0));
+            v_ord.push_back(make_pair("c", 3.0));
+
+            sort(v_ord.begin(), v_ord.end(), ord);
+
+            CHECK("c" == v_ord[0].first);
+            CHECK("a" == v_ord[1].first);
+            CHECK("b" == v_ord[2].first);
+
+        }
+
+        SUBCASE("rank()"){
+            Rank r(query, indice);
+            vector <pair <string, double> > rank = rank_teste.rank(r);
+
+            CHECK("testes/rank_teste/D4" == rank[0].first);
+            CHECK("testes/rank_teste/D1" == rank[1].first);
+            CHECK("testes/rank_teste/D3" == rank[2].first);
+            CHECK("testes/rank_teste/D2" == rank[3].first);
+        }
 }
+

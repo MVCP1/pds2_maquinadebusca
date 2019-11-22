@@ -32,7 +32,7 @@ class Rank {
 
     private:
         // Rank dos arquivos em ordem decrescente de similaridade
-        vector <pair <string, int> > rank_;
+        vector <pair <string, double> > rank_;
 
         friend class RankTeste;
 };
