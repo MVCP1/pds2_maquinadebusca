@@ -3,15 +3,20 @@
 using namespace std;
 namespace fs = filesystem;
 
-LeitorPesquisa::LeitorPesquisa(string pesquisa, IndiceInvertido &indice) {
-    pesquisa_ = pesquisa;
+LeitorPesquisa::LeitorPesquisa() {
+    vector<string> palavras_;
+}
+
+multiset<string> LeitorPesquisa::pesquisa(IndiceInvertido &indice) {
+    string pesquisa;
+    getline(cin, pesquisa);
+
+    string lendo = "";
 	
-	string lendo = "";
-	
-	for(int i = 0; i < int(pesquisa_.length()); i++){
-        char c = pesquisa_[i];
+	for(int i = 0; i < int(pesquisa.length()); i++){
+        char c = pesquisa[i];
 		
-        if(c != ' ' && i+1 != int(pesquisa_.length())){
+        if(c != ' ' && i+1 != int(pesquisa.length())){
 			lendo.push_back(c);
 		}
 
@@ -24,9 +29,7 @@ LeitorPesquisa::LeitorPesquisa(string pesquisa, IndiceInvertido &indice) {
 			lendo = "";
 		}
 	}
-}
 
-multiset<string> LeitorPesquisa::palavras() {
     return palavras_;
 }
 
