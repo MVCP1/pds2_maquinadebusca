@@ -1,10 +1,10 @@
 CC=g++
 CFLAGS=-lstdc++fs -std=c++17 -Wall
 
-all: bin/main
+all: main
 
-run: bin/main
-	./bin/main
+run: main
+	./main
 
 clean:
 	rm -rf bin/*
@@ -80,5 +80,5 @@ bin/rank_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o bin/n
 bin/main.o: src/main.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 	
-bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o bin/leitor_pesquisa.o bin/normas.o
+main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o bin/leitor_pesquisa.o bin/normas.o
 	${CC} ${CFLAGS} $^ -o $@ -lstdc++fs
