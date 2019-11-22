@@ -1,5 +1,5 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "leitor.h"
+#include "leitor_pesquisa.h"
 
 #include "doctest.h"
 

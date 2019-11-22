@@ -17,47 +17,47 @@ public:
 };
 
 
-TEST_SUITE("rank_teste")
-    TEST_CASE("Rank") {
 
-        RankTeste rank_teste;
-        IndiceInvertido indice;
+TEST_CASE("Rank") {
 
-        indice.InserePasta("testes/rank_teste");
-        multiset<string> query;
-        query.insert("a");
-        query.insert("b");
+    RankTeste rank_teste;
+    IndiceInvertido indice;
 
-        SUBCASE("similaridade(rank_test)"){
+    indice.InserePasta("testes/rank_teste");
+    multiset<string> query;
+    query.insert("a");
+    query.insert("b");
 
-            CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice));
-            CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice));
-            CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice));
-            CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice));
-        }
+    SUBCASE("similaridade(rank_test)"){
 
-        SUBCASE("ord(pair<string, double>)"){
-            vector<pair<string, double> > v_ord;
-            v_ord.push_back(make_pair("a", 2.0));
-            v_ord.push_back(make_pair("b", 1.0));
-            v_ord.push_back(make_pair("c", 3.0));
+        CHECK(0.71 == similaridade("testes/rank_teste/D1", query, indice));
+        CHECK(0.0 == similaridade("testes/rank_teste/D2", query, indice));
+        CHECK(0.0 == similaridade("testes/rank_teste/D3", query, indice));
+        CHECK(0.95 == similaridade("testes/rank_teste/D4", query, indice));
+    }
 
-            sort(v_ord.begin(), v_ord.end(), ord);
+    SUBCASE("ord(pair<string, double>)"){
+        vector<pair<string, double> > v_ord;
+        v_ord.push_back(make_pair("a", 2.0));
+        v_ord.push_back(make_pair("b", 1.0));
+        v_ord.push_back(make_pair("c", 3.0));
 
-            CHECK("c" == v_ord[0].first);
-            CHECK("a" == v_ord[1].first);
-            CHECK("b" == v_ord[2].first);
+        sort(v_ord.begin(), v_ord.end(), ord);
 
-        }
+        CHECK("c" == v_ord[0].first);
+        CHECK("a" == v_ord[1].first);
+        CHECK("b" == v_ord[2].first);
 
-        SUBCASE("rank()"){
-            Rank r(query, indice);
-            vector <pair <string, double> > rank = rank_teste.rank(r);
+    }
 
-            CHECK("testes/rank_teste/D4" == rank[0].first);
-            CHECK("testes/rank_teste/D1" == rank[1].first);
-            CHECK("testes/rank_teste/D3" == rank[2].first);
-            CHECK("testes/rank_teste/D2" == rank[3].first);
-        }
+    SUBCASE("rank()"){
+        Rank r(query, indice);
+        vector <pair <string, double> > rank = rank_teste.rank(r);
+
+        CHECK("testes/rank_teste/D4" == rank[0].first);
+        CHECK("testes/rank_teste/D1" == rank[1].first);
+        CHECK("testes/rank_teste/D3" == rank[2].first);
+        CHECK("testes/rank_teste/D2" == rank[3].first);
+    }
 }
 

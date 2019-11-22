@@ -9,8 +9,7 @@ run: bin/main
 clean:
 	rm -rf bin/*
 
-teste: indice_teste coordenadas_teste rank_teste
-# bin/leitor.o leitor_teste
+teste: indice_teste coordenadas_teste leitor_pesquisa_teste rank_teste
 
 indice_teste: bin/indice_teste
 	./bin/indice_teste
@@ -19,10 +18,10 @@ coordenadas_teste: bin/coordenadas_teste
 	./bin/coordenadas_teste
 
 rank_teste: bin/rank_teste
-	./bin/coordenadas_teste
+	./bin/rank_teste
 
-leitor_teste: bin/leitor_teste
-	./bin/leitor_teste
+leitor_teste: bin/leitor_pesquisa_teste
+	./bin/leitor_pesquisa_teste
 
 
 bin/indice.o: src/indice.cpp
@@ -45,13 +44,13 @@ bin/coordenadas_teste: bin/coordenadas_teste.o bin/coordenadas.o bin/indice.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
-bin/leitor.o: src/leitor.cpp
+bin/leitor_pesquisa.o: src/leitor_pesquisa.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 
-bin/leitor_teste.o: src/leitor_teste.cpp
+bin/leitor_pesquisa_teste.o: src/leitor_pesquisa_teste.cpp
 	${CC} ${CFLAGS} -I include/ -c $^ -lstdc++fs -o $@
 
-bin/leitor_teste: bin/leitor_teste.o bin/leitor.o
+bin/leitor_pesquisa_teste: bin/leitor_pesquisa_teste.o bin/leitor_pesquisa.o
 	${CC} ${CFLAGS} -I include/ $^ -o $@ -lstdc++fs
 
 
@@ -68,5 +67,5 @@ bin/rank_teste: bin/rank_teste.o bin/rank.o bin/coordenadas.o bin/indice.o
 bin/main.o: src/main.cpp
 	${CC} ${CFLAGS} -c $^ -lstdc++fs -o $@
 	
-bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o #bin/leitor.o
+bin/main: bin/main.o bin/indice.o bin/coordenadas.o bin/rank.o bin/leitor_pesquisa.o
 	${CC} ${CFLAGS} $^ -o $@ -lstdc++fs
