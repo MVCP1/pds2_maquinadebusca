@@ -17,15 +17,10 @@ int main() {
 
     system("cls|clear");
 
-    while(continuar != "n") {
-        multiset <string> pesquisa = leitor.Pesquisa(indice);
+    multiset <string> pesquisa = leitor.Pesquisa(indice);
 
-        Rank rank(pesquisa, indice, norma);
-        rank.imprimir(10);
-
-        cout << endl << "Gostaria de pesquisar mais uma vez? (s/n): ";
-        cin >> continuar;
-    }
+    Rank rank(pesquisa, indice, norma);
+    rank.imprimir(10);
     
     return 0;
 }

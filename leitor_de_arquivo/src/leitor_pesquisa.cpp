@@ -38,7 +38,7 @@ multiset<string> LeitorPesquisa::frequencias(IndiceInvertido &indice, string pes
 string LeitorPesquisa::entrada() {
     string entrada;
     cout << "Digite sua pesquisa: ";
-    cin.ignore();
+    cin.clear();
     getline(cin, entrada);
 
     return entrada;
