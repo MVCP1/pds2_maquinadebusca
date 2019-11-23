@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "indice.h"
 #include "coordenadas.h"
 #include "rank.h"
@@ -11,13 +12,19 @@ int main() {
     IndiceInvertido indice;
     indice.InserePasta("arquivos");
     Norma norma(indice);
-
     LeitorPesquisa leitor;
-    multiset <string> pesquisa = leitor.Pesquisa(indice);
-    
-    Rank rank(pesquisa, indice, norma);
+    string continuar = "s";
 
-    rank.imprimir(10);
+    system("cls|clear");
 
+    while(continuar != "n") {
+        multiset <string> pesquisa = leitor.Pesquisa(indice);
+
+        Rank rank(pesquisa, indice, norma);
+        rank.imprimir(10);
+
+        cout << endl << "Gostaria de pesquisar mais uma vez? (s/n): ";
+        cin >> continuar;
+    }
     return 0;
 }

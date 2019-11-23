@@ -3,6 +3,11 @@
 using namespace std;
 namespace fs = filesystem;
 
+void limpar_buffer(void){
+    char c;
+    while ((c = getchar()) != '\n' && c!= EOF);
+}
+
 LeitorPesquisa::LeitorPesquisa() {
     vector<string> palavras_;
 }
@@ -32,14 +37,15 @@ multiset<string> LeitorPesquisa::frequencias(IndiceInvertido &indice, string pes
 		}
 
 	}
-
     return palavras_;
 }
 
 string LeitorPesquisa::entrada() {
     string entrada;
     cout << "Digite sua pesquisa: ";
+
     getline(cin, entrada);
+    limpar_buffer();
 
     return entrada;
 }

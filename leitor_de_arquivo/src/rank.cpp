@@ -46,11 +46,28 @@ Rank::Rank(multiset <string> &query, IndiceInvertido& indice, Norma& normas) {
 
 
 void Rank::imprimir(int k) {
-    cout << rank_[0].first << " ";
+    int num;
+    string s, abrir, cmd = "gedit ";
+
+    cout << 1 << "\t" << rank_[0].first << " ";
+
     for(int i=1; i<min((int) rank_.size(), k); i++){
         if(rank_[i].second != rank_[i-1].second)
-            cout << endl;
+            cout << endl << i+1 << "\t";
             
-        cout << rank_[i].first << " ";
+        cout  << rank_[i].first << " ";
     }
+    cout << endl;
+    cout << endl << "Gostaria de abrir algum algum arquivo? (s/n): ";
+    cin >> abrir;
+
+    if(abrir == "s"){
+        cout << "Qual dos arquivos? (1 ... k): ";
+        cin >> num;
+
+        if(num > min((int) rank_.size(), k)) num = min((int) rank_.size(), k);
+        cmd += rank_[num-1].first;
+        system(cmd.c_str());
+    }
+
 }   
