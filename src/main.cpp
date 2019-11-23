@@ -19,6 +19,7 @@ int main() {
 
     cout << "Gostaria de fazer uma pesquisa? (s/n): ";
     cin >> s;
+    if(s != "s") return 0;
 
     multiset <string> pesquisa = leitor.Pesquisa(indice);
 

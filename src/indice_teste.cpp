@@ -14,7 +14,7 @@ using namespace std;
 
 class IndiceTeste {
     public:
-        static IndiceTeste(IndiceInvertido *indice_ptr) {
+        IndiceTeste(IndiceInvertido *indice_ptr) {
             teste_indice_ptr_ = indice_ptr;
         }
 
