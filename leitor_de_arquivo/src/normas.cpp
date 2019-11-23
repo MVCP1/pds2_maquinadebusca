@@ -1,8 +1,5 @@
-//
-// Created by emanuel on 22/11/19.
-//
-
 #include "normas.h"
+
 using namespace std;
 
 Norma::Norma(IndiceInvertido &indice){

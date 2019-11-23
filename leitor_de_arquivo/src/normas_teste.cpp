@@ -1,8 +1,5 @@
-//
-// Created by emanuel on 22/11/19.
-//
-
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
 #include "normas.h"
 #include "doctest.h"
 

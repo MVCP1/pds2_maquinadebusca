@@ -101,7 +101,6 @@ TEST_SUITE("COORDENADAS") {
 			CHECK(log(4.0/2.0)*0.0 == laranja.valor("testes/coordenadas_teste/doc3"));
 			CHECK(log(4.0/2.0)*3.0 == laranja.valor("testes/coordenadas_teste/doc4"));
 			
-			
 		}
 	}
 }

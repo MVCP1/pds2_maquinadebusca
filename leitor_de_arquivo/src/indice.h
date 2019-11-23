@@ -34,7 +34,6 @@ class IndiceInvertido{
         set<string> todas_palavras();
 
     private:
-
         int num_arquivos_;
         map<string,multiset<string> > indice_invertido_;
         set<string> todas_palavras_;

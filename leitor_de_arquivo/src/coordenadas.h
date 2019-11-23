@@ -1,3 +1,5 @@
+// Cria as coordenadas de um documento no eixo de uma palavra
+
 #ifndef COORDENADAS_H
 #define COORDENADAS_H
 

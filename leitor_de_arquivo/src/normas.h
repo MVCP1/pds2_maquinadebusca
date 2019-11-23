@@ -1,6 +1,4 @@
-//
-// Created by emanuel on 22/11/19.
-//
+// Calcula a norma do vetor dos documentos
 
 #ifndef NORMAS_H
 #define NORMAS_H

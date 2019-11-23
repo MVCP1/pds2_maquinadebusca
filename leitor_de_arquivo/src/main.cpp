@@ -26,5 +26,6 @@ int main() {
         cout << endl << "Gostaria de pesquisar mais uma vez? (s/n): ";
         cin >> continuar;
     }
+    
     return 0;
 }

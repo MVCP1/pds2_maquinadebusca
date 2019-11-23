@@ -1,3 +1,6 @@
+// Recebe a pesquisa tratada e retorna os documentos
+// em ordem de importância
+
 #ifndef RANK_H
 #define RANK_H
 
@@ -17,7 +20,6 @@ double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& in
 
 // Ordena o rank pelas similaridades
 bool ord(pair<string, double > a, pair<string, double > );
-
 
 class Rank {
     public:

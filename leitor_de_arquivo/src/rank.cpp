@@ -1,11 +1,6 @@
-//
-// Created by emanuel on 22/11/19.
-//
-
 #include "rank.h"
 
 using namespace std;
-
 
 double similaridade(string arquivo, multiset<string>& query, IndiceInvertido& indice, Norma& norma_arquivo){
     double produto_interno = 0, norma_pesquisa = 0, w_doc, w_q;
@@ -36,14 +31,12 @@ bool ord(pair<string, double > a, pair<string, double > b){
     return a.second > b.second;
 }
 
-
 Rank::Rank(multiset <string> &query, IndiceInvertido& indice, Norma& normas) {
     for (auto arquivo : indice.nomes_arquivos())
         rank_.push_back(make_pair(arquivo, similaridade(arquivo, query, indice, normas)));
 
     sort(rank_.begin(), rank_.end(), ord);
 }
-
 
 void Rank::imprimir(int k) {
     int num;
@@ -69,5 +62,4 @@ void Rank::imprimir(int k) {
         cmd += rank_[num-1].first;
         system(cmd.c_str());
     }
-
 }   

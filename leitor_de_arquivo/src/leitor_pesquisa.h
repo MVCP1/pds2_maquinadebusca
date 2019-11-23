@@ -22,8 +22,8 @@ class LeitorPesquisa{
 
         // Retorna um multiset com as palavras da query no formato correto
         multiset<string> Pesquisa(IndiceInvertido &indice);
-    private:
 
+    private:
         // Multiset de todas as palavras da pesquisa (que também existem nos documentos) tratadas
         multiset<string> palavras_; 
 

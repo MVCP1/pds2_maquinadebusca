@@ -140,7 +140,6 @@ TEST_CASE("Leitor Índice Invertido") {
 
         multiset<string> real = {"testes/arquivos_teste/dificil","testes/arquivos_teste/dificil",
                                 "testes/arquivos_teste/dificil","testes/arquivos_teste/dificil"};
-
         CHECK(indice["nasce"] == real);
     }
 }
