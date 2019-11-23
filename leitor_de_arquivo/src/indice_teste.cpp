@@ -14,27 +14,27 @@ using namespace std;
 
 class IndiceTeste {
     public:
-        IndiceTeste(IndiceInvertido *indice_ptr) {
+        static IndiceTeste(IndiceInvertido *indice_ptr) {
             teste_indice_ptr_ = indice_ptr;
         }
 
-        void teste_InsereArquivo(string nome_arquivo) {
+        static void teste_InsereArquivo(string nome_arquivo) {
             teste_indice_ptr_->InsereArquivo(nome_arquivo);
         }
 
-        void teste_InsereNomesArquivos(string nome_arquivo) {
+        static void teste_InsereNomesArquivos(string nome_arquivo) {
             teste_indice_ptr_->InsereNomesArquivos(nome_arquivo);
         }
 
-        string teste_formaliza_palavra(string palavra) {
+        static string teste_formaliza_palavra(string palavra) {
             return teste_indice_ptr_->formaliza_palavra(palavra);
         }
 
-        map<string,multiset<string> > teste_indice_invertido() {
+        static map<string,multiset<string> > teste_indice_invertido() {
             return teste_indice_ptr_->indice_invertido_;
         }
 
-        set<string> teste_todas_palavras() {
+        static set<string> teste_todas_palavras() {
             return teste_indice_ptr_->todas_palavras_;
         }
 
