@@ -1,4 +1,5 @@
 
 \.vscode/settings\.json
-arquivos/
+!arquivos/exemplo
+arquivos/*
 !arquivos/exemplo
