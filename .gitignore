@@ -1,6 +1,4 @@
 
-leitor_de_arquivo/bin/*
-!leitor_de_arquivo/bin/__init__.txt
 \.vscode/settings\.json
-
-leitor_de_arquivo/\.idea/
+arquivos/
+!arquivos/exemplo
