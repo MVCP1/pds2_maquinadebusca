@@ -12,11 +12,11 @@
 
 class LeitorPesquisaTeste {
     public:
-    string teste_formaliza_palavra(string s, LeitorPesquisa &c) {
+    static string teste_formaliza_palavra(string s, LeitorPesquisa &c) {
         return c.formaliza_palavra(s);
     }
 
-    multiset<string> teste_frequencias(string pesquisa, IndiceInvertido &indice, LeitorPesquisa &c) {
+    static multiset<string> teste_frequencias(string pesquisa, IndiceInvertido &indice, LeitorPesquisa &c) {
         return c.frequencias(indice, pesquisa);
     }
 };

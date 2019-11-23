@@ -7,7 +7,7 @@ using namespace std;
 
 class NormaTeste{
     public:
-        map<string, double> teste_normas(Norma &n){
+        static map<string, double> teste_normas(Norma &n){
             return n.norma_;
         }
 };
