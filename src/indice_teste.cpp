@@ -18,23 +18,23 @@ class IndiceTeste {
             teste_indice_ptr_ = indice_ptr;
         }
 
-        static void teste_InsereArquivo(string nome_arquivo) {
+        void teste_InsereArquivo(string nome_arquivo) {
             teste_indice_ptr_->InsereArquivo(nome_arquivo);
         }
 
-        static void teste_InsereNomesArquivos(string nome_arquivo) {
+        void teste_InsereNomesArquivos(string nome_arquivo) {
             teste_indice_ptr_->InsereNomesArquivos(nome_arquivo);
         }
 
-        static string teste_formaliza_palavra(string palavra) {
+        string teste_formaliza_palavra(string palavra) {
             return teste_indice_ptr_->formaliza_palavra(palavra);
         }
 
-        static map<string,multiset<string> > teste_indice_invertido() {
+        map<string,multiset<string> > teste_indice_invertido() {
             return teste_indice_ptr_->indice_invertido_;
         }
 
-        static set<string> teste_todas_palavras() {
+        set<string> teste_todas_palavras() {
             return teste_indice_ptr_->todas_palavras_;
         }
 
