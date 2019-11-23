@@ -62,4 +62,6 @@ void Rank::imprimir(int k) {
         cmd += rank_[num-1].first;
         system(cmd.c_str());
     }
+
+    rank_.clear();
 }   
