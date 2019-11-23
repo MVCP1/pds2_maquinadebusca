@@ -51,7 +51,7 @@ void Rank::imprimir(int k) {
         cout  << rank_[i].first << " ";
     }
     cout << endl;
-    cout << endl << "Gostaria de abrir algum algum arquivo? (s/n): ";
+    cout << endl << "Gostaria de abrir algum arquivo? (s/n): ";
     cin >> abrir;
 
     if(abrir == "s"){
